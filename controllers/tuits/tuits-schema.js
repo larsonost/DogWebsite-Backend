@@ -13,7 +13,10 @@ const schema = mongoose.Schema({
   seekingrole: String,
   selectedDogName: String,
   selectedDogBreed: String,
-  interest: String
+  interest: String,
+  selectedproductName: String,
+  selectedproductPrice: String,
+  dogBreedTarget: String
 
 }, {collection: 'tuits'});
 export default schema;
