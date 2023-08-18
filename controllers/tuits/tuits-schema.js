@@ -16,7 +16,8 @@ const schema = mongoose.Schema({
   interest: String,
   selectedproductName: String,
   selectedproductPrice: String,
-  dogBreedTarget: String
+  dogBreedTarget: String,
+  service: String
 
 }, {collection: 'tuits'});
 export default schema;
