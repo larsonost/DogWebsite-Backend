@@ -54,10 +54,19 @@ const AuthController = (app) => {
     }
   };
 
+  const getUserById = async (req, res) => {
+    console.log("got here")
+    const { id } = req.params;
+    // const user = users.find((user) => user._id === id);
+    const user = await usersDao.findUserById(id);
+    res.json(user);
+  };
+  
   app.post("/api/users/register", register);
   app.post("/api/users/login", login);
   app.post("/api/users/profile", profile);
   app.post("/api/users/logout", logout);
   app.put("/api/users/:uid", update);
+  app.get("/api/users/:id", getUserById);
 };
 export default AuthController;
