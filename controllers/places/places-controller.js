@@ -26,7 +26,7 @@ const deletePlaces = (req, res) => {
 
 const extractPlace  = async (req, res) => {
     const response = await fetch(`http://localhost:4000/api/places`).then(response => response.json())
-    const place_id = response[0].placeFound.place_id;
+    const place_id = response?.[0].placeFound.place_id;
     const placeInfo = await placeDao.extractPlace(place_id);
     console.log(placeInfo)
     res.json(placeInfo)
