@@ -50,7 +50,7 @@ const createUser = async (req, res) => {
   };
   
 const findUserById = async (req, res) => {
-    const id = req.params.id;
+  const id = req.params.uid || req.params.id;
     const user = await usersDao.findUserById(id);
     res.json(user);
   };
