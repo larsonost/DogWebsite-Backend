@@ -41,18 +41,22 @@ const AuthController = (app) => {
     res.sendStatus(200);
   };
 
-  const update = (req, res) => {
-    const username = req.body.data.username
-    const updateInfo = req.body;
-    const user = usersDao.findUserByUsername(username);
+  const update = async (req, res) => {
+    const username = req.body.data.username;
+    const user = await usersDao.findUserByUsername(username);
+
     if (!user) {
-      res.sendStatus(404)
+        res.sendStatus(404);
     } else {
-      const userId = user._id;
-      usersDao.updateUser(userId, updateInfo);
-      res.sendStatus(200);
+        const userId = user._id;
+        const updateData = {
+            firstName: req.body.firstName
+        };
+        await usersDao.updateUser(userId, updateData);
+        res.sendStatus(200);
     }
-  };
+};
+
   
   app.post("/api/users/register", register);
   app.post("/api/users/login", login);
